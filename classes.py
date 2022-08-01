@@ -87,7 +87,7 @@ class Shop(Store):
             print("Переизбыток уникальных товаров")
             return False
         else:
-            super().add(name, count)
+            return super().add(name, count)
 
 
 class Request:
@@ -115,10 +115,10 @@ class Request:
         if self.__to and self.__from:
             if eval(self.__to).add(self.__item, self.__count):
                 eval(self.__from).remove(self.__item, self.__count)
-        elif self.__from:
-            eval(self.__from).remove(self.__item, self.__count)
         elif self.__to:
             eval(self.__to).add(self.__item, self.__count)
+        elif self.__from:
+            eval(self.__from).remove(self.__item, self.__count)
 
 
 storage_1 = Store(items={"Ватрушка": 10, "Печенька": 10, "Бублик": 20})
